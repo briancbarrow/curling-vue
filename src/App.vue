@@ -3,7 +3,7 @@
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <h1 class="title">Elit3 Curling</h1>
     <h2 class="subtitle">Tabletop Curling Web App</h2>
-    <Scorecard/>
+    <scorecard/>
   </div>
 </template>
 
