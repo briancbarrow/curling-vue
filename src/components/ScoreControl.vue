@@ -5,10 +5,10 @@
       End Winner:
       <select v-model="selected">
         <option
-          v-for="player in players"
+          v-for="player in this.players"
           :key="players.indexOf(player)"
           :value="players.indexOf(player)"
-        >{{player}}</option>
+        >{{player.name}}</option>
       </select>
     </p>
     <div class="score-container">
@@ -25,12 +25,15 @@
 export default {
   data() {
     return {
-      players: ["Player 1", "Player 2"],
+      // players:
       selected: 0,
       score: 0
     };
   },
-  props: ["endTracker"],
+  beforeMount: function() {
+    console.log(this.players);
+  },
+  props: ["endTracker", "players"],
   methods: {
     submitScore: function() {
       this.$emit("submit-score", this.selected, this.score, this.endTracker);

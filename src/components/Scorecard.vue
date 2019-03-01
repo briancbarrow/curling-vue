@@ -29,7 +29,11 @@
     </table>
     <button type="button" v-on:click="addEnd">Add Extra End</button>
     <button type="button" v-on:click="removeEnd">Remove Extra End</button>
-    <ScoreControl v-on:submit-score="addScore" :endTracker="endTracker"></ScoreControl>
+    <ScoreControl
+      v-on:submit-score="addScore"
+      :endTracker="endTracker"
+      :players="[player1, player2]"
+    ></ScoreControl>
   </div>
 </template>
 
