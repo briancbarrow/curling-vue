@@ -3,11 +3,15 @@
     <table>
       <tbody>
         <tr>
+          <th></th>
           <th>Players</th>
           <th v-for="end in ends" :key="end.endId">{{end.endId}}</th>
           <th>Total</th>
         </tr>
         <tr id="player1">
+          <td>
+            <img src="../assets/Curling-hammer.svg" alt="curling hammer" v-if="player1.hasHammer">
+          </td>
           <td class="playerName">
             <input v-model="player1.name">
           </td>
@@ -17,6 +21,9 @@
           <td>{{ player1.total }}</td>
         </tr>
         <tr id="player2">
+          <td>
+            <img src="../assets/Curling-hammer.svg" alt="curling hammer" v-if="player2.hasHammer">
+          </td>
           <td class="playerName">
             <input v-model="player2.name">
           </td>
@@ -29,6 +36,7 @@
     </table>
     <button type="button" v-on:click="addEnd">Add Extra End</button>
     <button type="button" v-on:click="removeEnd">Remove Extra End</button>
+    <button type="button" v-on:click="previousEnd">Go To Previous End</button>
     <ScoreControl
       v-on:submit-score="addScore"
       :endTracker="endTracker"
@@ -48,11 +56,13 @@ export default {
       ends: [],
       player1: {
         total: 0,
-        name: "Player 1"
+        name: "Player 1",
+        hasHammer: true
       },
       player2: {
         total: 0,
-        name: "Player 2"
+        name: "Player 2",
+        hasHammer: false
       }
     };
   },
@@ -78,9 +88,20 @@ export default {
       });
     },
     removeEnd() {
-      if (this.endCount >= 10) {
+      if (this.endCount > 10) {
         this.endCount--;
         this.ends.pop();
+      }
+    },
+    previousEnd() {
+      this.endTracker--;
+      let previousEnd = this.ends[this.endTracker - 1];
+      let previousScore = previousEnd.score;
+      let previousEndWinner = previousEnd.endWinner;
+      if (previousEndWinner === 0) {
+        this.player1.total -= previousScore;
+      } else {
+        this.player2.total -= previousScore;
       }
     },
     addScore(player, score, scoreEnd) {
@@ -88,34 +109,17 @@ export default {
       this.ends[scoreEnd].score = score;
       this.ends[scoreEnd].endWinner = player;
       this.endTracker++;
+      // this.ends[endTracker].hasHammer = !player;
       if (player === 0) {
         this.player1.total += score;
+        this.player1.hasHammer = false;
+        this.player2.hasHammer = true;
       } else {
         this.player2.total += score;
+        this.player2.hasHammer = false;
+        this.player1.hasHammer = true;
       }
     }
-    // totalScore() {
-    //   const player1Inputs = document.getElementsByClassName("scoreInput1");
-
-    //   console.log(player1Inputs);
-    //   const player2Inputs = document.getElementsByClassName("scoreInput2");
-    //   this.player1.total = 0;
-    //   this.player2.total = 0;
-
-    //   for (let i = 0; i < player1Inputs.length; i++) {
-    //     console.log(player1Inputs[i]);
-    //     const inputValue = parseInt(player1Inputs[i].value);
-    //     if (inputValue) {
-    //       this.player1.total += parseInt(player1Inputs[i].value);
-    //     }
-    //   }
-    //   for (let i = 0; i < player2Inputs.length; i++) {
-    //     const inputValue = parseInt(player2Inputs[i].value);
-    //     if (inputValue) {
-    //       this.player2.total += parseInt(player2Inputs[i].value);
-    //     }
-    //   }
-    // }
   }
 };
 </script>
@@ -164,6 +168,10 @@ tr {
   border: 1px solid black;
 }
 
+img {
+  max-width: 20px;
+  margin-right: 10px;
+}
 td:last-child {
   font-weight: bold;
   color: $vueGreen;

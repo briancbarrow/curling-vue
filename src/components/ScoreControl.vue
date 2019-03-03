@@ -14,7 +14,7 @@
     <div class="score-container">
       <p>
         Score:
-        <input type="number" v-model.number="score">
+        <input type="number" min="0" max="5" v-model.number="score">
       </p>
     </div>
     <button type="submit" v-on:click.prevent="submitScore">Submit End Score</button>
