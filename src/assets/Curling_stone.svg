@@ -1,0 +1,45 @@
+<!-- <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="280"
+   height="230"
+   id="svg2">
+  <defs
+     id="defs5" />
+  <g
+     transform="translate(-14.00009,-2.068802)"
+     id="g2785">
+    <rect
+       width="248.00017"
+       height="132"
+       rx="66"
+       ry="66"
+       x="30.000008"
+       y="83"
+       style="opacity:1;fill:gray;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.12500119;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2778" />
+    <rect
+       width="248.00017"
+       height="38"
+       x="30.000008"
+       y="130"
+       style="opacity:1;fill:silver;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.12500119;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1873" />
+    <rect
+       width="248.00017"
+       height="132"
+       rx="66"
+       ry="66"
+       x="30.000008"
+       y="83"
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:black;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2780" />
+    <path
+       d="M 82.000008,83 L 118.00005,83 L 154.00009,83 L 190.00014,83 C 190.00014,54.323106 182.1153,50.5341 170.46403,50.5341 L 105.9399,50.5341 C 91.72439,50.5341 83.461605,43.060718 83.461605,33.781136 C 83.461605,22.770707 92.823189,19.137604 105.667,19.137604 L 188.72846,19.137604 C 207.77798,19.137604 226.00018,52.71907 226.00018,83 C 244.28218,83 246.78218,90.359 258.71168,102.2885 L 49.288508,102.2885 C 61.218008,90.359 63.718008,83 82.000008,83 z "
+       style="fill:red;fill-opacity:1;fill-rule:nonzero;stroke:#640000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1"
+       id="rect2782" />
+  </g>
+</svg>
