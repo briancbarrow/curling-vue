@@ -4,7 +4,10 @@
     <!-- <h1 class="title">Elit3 Curling</h1> -->
     <img class="stone-image" src="./assets/Curling_stone.svg" alt="curling stone">
     <h2 class="subtitle">Tabletop Curling Web App</h2>
-    <scorecard/>
+    <button v-on:click.prevent="startQuickGame" v-if="!quickGame">Start quick game</button>
+    <button v-if="!isLoggedIn" v-on:click.prevent="showLoginForm">Log In</button>
+    <login-form v-on:login-success="loginSuccess" v-if="!quickGame"/>
+    <scorecard v-if="quickGame"/>
     <p class="attribution">
       Hammer image attribution: By
       <a
@@ -24,12 +27,32 @@
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
 import Scorecard from "./components/Scorecard.vue";
+import LoginForm from "./components/LoginForm.vue";
 
 export default {
   name: "app",
   components: {
     // HelloWorld,
+    LoginForm,
     Scorecard
+  },
+  data() {
+    return {
+      quickGame: false,
+      isLoggedIn: false
+    };
+  },
+  methods: {
+    startQuickGame() {
+      this.quickGame = true;
+    },
+    showLoginForm() {
+      this.quickGame = false;
+      this.isLoggedIn = false;
+    },
+    loginSuccess() {
+      this.isLoggedIn = true;
+    }
   }
 };
 </script>
