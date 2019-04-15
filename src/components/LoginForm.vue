@@ -14,8 +14,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      username: "",
-      password: ""
+      username: "Brian Bc",
+      password: "Testing123"
     };
   },
   beforeMount: function() {},
@@ -28,9 +28,14 @@ export default {
         })
         .then(response => {
           if (response.status === 200) {
-            this.$emit("login-success");
+            this.loginSuccess(response.data.authToken);
           }
         });
+    },
+    loginSuccess(token) {
+      this.authToken = token;
+      this.$store.commit("userLogin", token);
+      this.$router.push("/dashboard");
     }
   }
 };

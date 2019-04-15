@@ -2,12 +2,14 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <h1 class="title">Elit3 Curling</h1> -->
+    <!-- <router-link to="/dashboard">Go to Dash</router-link> -->
     <img class="stone-image" src="./assets/Curling_stone.svg" alt="curling stone">
     <h2 class="subtitle">Tabletop Curling Web App</h2>
     <button v-on:click.prevent="startQuickGame" v-if="!quickGame">Start quick game</button>
-    <button v-if="!isLoggedIn" v-on:click.prevent="showLoginForm">Log In</button>
-    <login-form v-on:login-success="loginSuccess" v-if="!quickGame"/>
-    <scorecard v-if="quickGame"/>
+    <button v-if="loginFormVisible" v-on:click.prevent="showLoginForm">Log In</button>
+    <!-- <login-form v-on:login-success="loginSuccess" v-if="loginFormVisible"/> -->
+    <!-- <scorecard v-if="quickGame"/> -->
+    <router-view></router-view>
     <p class="attribution">
       Hammer image attribution: By
       <a
@@ -26,32 +28,45 @@
 
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
-import Scorecard from "./components/Scorecard.vue";
-import LoginForm from "./components/LoginForm.vue";
+// import Scorecard from "./components/Scorecard.vue";
+// import LoginForm from "./components/LoginForm.vue";
+import store from "../store/index";
 
 export default {
   name: "app",
+  store,
   components: {
     // HelloWorld,
-    LoginForm,
-    Scorecard
+    // LoginForm
+    // Scorecard
   },
   data() {
     return {
-      quickGame: false,
-      isLoggedIn: false
+      authToken: null,
+      quickGame: false
     };
+  },
+  computed: {
+    isLoggedIn() {
+      return store.state.isLoggedIn;
+    },
+    loginFormVisible() {
+      this.isLoggedIn;
+      let visible = ["login", "register"].includes(this.$route.name);
+      console.log(visible);
+      return !visible && !this.isLoggedIn;
+    }
   },
   methods: {
     startQuickGame() {
       this.quickGame = true;
+      this.$router.push("/scorecard");
     },
     showLoginForm() {
-      this.quickGame = false;
-      this.isLoggedIn = false;
-    },
-    loginSuccess() {
-      this.isLoggedIn = true;
+      // this.quickGame = false;
+      // this.isLoggedIn = false;
+      // store.commit("userLogout");
+      this.$router.push("/login");
     }
   }
 };

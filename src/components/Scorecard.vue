@@ -66,6 +66,7 @@ export default {
       }
     };
   },
+  computed: {},
   created: function() {
     for (let index = 1; index <= this.endCount; index++) {
       this.ends.push({
