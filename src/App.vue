@@ -53,7 +53,6 @@ export default {
     loginFormVisible() {
       this.isLoggedIn;
       let visible = ["login", "register"].includes(this.$route.name);
-      console.log(visible);
       return !visible && !this.isLoggedIn;
     }
   },

@@ -5,12 +5,18 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    jwt: "",
+    authToken: "",
+    user: {
+      userId: null,
+      name: null,
+      email: null
+    },
     isLoggedIn: false
   },
   mutations: {
-    userLogin(state, newJwt) {
-      state.jwt = newJwt;
+    userLogin(state, data) {
+      state.authToken = data.authToken;
+      state.user = data.user;
       state.isLoggedIn = true;
     },
     userLogout(state) {

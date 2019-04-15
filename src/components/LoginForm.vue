@@ -22,19 +22,19 @@ export default {
   methods: {
     checkForm: function() {
       axios
-        .post("http://localhost:8080/api/users/login", {
+        .post("http://localhost:3000/api/users/login", {
           username: this.username,
           password: this.password
         })
         .then(response => {
           if (response.status === 200) {
-            this.loginSuccess(response.data.authToken);
+            this.loginSuccess(response.data);
           }
         });
     },
-    loginSuccess(token) {
-      this.authToken = token;
-      this.$store.commit("userLogin", token);
+    loginSuccess(data) {
+      // this.authToken = token;
+      this.$store.commit("userLogin", data);
       this.$router.push("/dashboard");
     }
   }
