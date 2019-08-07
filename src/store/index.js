@@ -9,12 +9,12 @@ const store = new Vuex.Store({
         showGif: false
     },
     mutations: {
-        toggle (state) {
-            // state.isModalVisible = !state.isModalVisible
-            state.showGif = !state.showGif
+        hide (state) {
+            state.isModalVisible = false
+            state.showGif = false
         },
-        toggleGif (state) {
-            state.showGif = !state.showGif
+        showGif (state) {
+            state.showGif = true
         },
         increment(state) {
             state.count++
@@ -24,11 +24,11 @@ const store = new Vuex.Store({
         getModalStatus: state => state.isModalVisible
     },
     actions: {
-        commitToggle (context) {
-            context.commit('toggle')
+        hideModal (context) {
+            context.commit('hide')
         },
-        toggleGif(context) {
-            context.commit('toggleGif')
+        showGif(context) {
+            context.commit('showGif')
         }
     }
 })
