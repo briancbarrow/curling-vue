@@ -31,7 +31,7 @@ export default {
     };
   },
   beforeMount: function() {
-    console.log(this.players);
+    // console.log(this.players);
   },
   props: ["endTracker", "players"],
   methods: {

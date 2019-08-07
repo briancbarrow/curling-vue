@@ -42,11 +42,13 @@
       :endTracker="endTracker"
       :players="[player1, player2]"
     ></ScoreControl>
+    <BestPlayerModal></BestPlayerModal>
   </div>
 </template>
 
 <script>
 import ScoreControl from "./ScoreControl.vue";
+import BestPlayerModal from "./BestPlayerModal"
 
 export default {
   data() {
@@ -76,7 +78,8 @@ export default {
     }
   },
   components: {
-    ScoreControl
+    ScoreControl,
+    BestPlayerModal
   },
   methods: {
     addEnd() {
